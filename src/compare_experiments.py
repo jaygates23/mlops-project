@@ -28,6 +28,10 @@ def run_single_experiment(config, experiment_name, run_name):
         config["numeric_columns"],
         config["categorical_columns"],
     )
+    target = config["target"]
+
+    df[target] = df[target].map({"no": 0, "yes": 1})
+
 
     df = encode_categoricals(df, config["categorical_columns"])
 
@@ -90,7 +94,7 @@ def run_single_experiment(config, experiment_name, run_name):
 
 
 def run_five_experiments():
-    base_config = load_config("/Users/tjscott23/Documents/MLOps_PL_project/configs/configs/config.yaml")
+    base_config = load_config("/Users/tjscott23/Documents/MLOps_PL_project/configs/config.yaml")
 
     experiment_name = "employee_attrition_experiments"
 
