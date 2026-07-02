@@ -90,7 +90,7 @@ def run_single_experiment(config, experiment_name, run_name):
 
 
 def run_five_experiments():
-    base_config = load_config("configs/config.yaml")
+    base_config = load_config("/Users/tjscott23/Documents/MLOps_PL_project/configs/configs/config.yaml")
 
     experiment_name = "employee_attrition_experiments"
 

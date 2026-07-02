@@ -43,6 +43,9 @@ def evaluate_model(config=None):
         config["numeric_columns"],
         config["categorical_columns"],
     )
+    target = config["target"]
+
+    df[target] = df[target].map({"no": 0, "yes": 1})
 
     df = encode_categoricals(df, config["categorical_columns"])
 

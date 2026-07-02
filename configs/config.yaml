@@ -42,7 +42,6 @@ categorical_columns:
   - job_role
   - marital_status
   - over_time
-  - attrition
 
 performance_thresholds:
   min_accuracy: 0.35

@@ -11,7 +11,7 @@ import yaml  # type: ignore
 from sklearn.model_selection import train_test_split  # type: ignore
 
 
-def load_config(config_path="configs/config.yaml"):
+def load_config(config_path="/Users/tjscott23/Documents/MLOps_PL_project/configs/config.yaml"):
     with open(config_path, "r") as f:
         return yaml.safe_load(f)
 
