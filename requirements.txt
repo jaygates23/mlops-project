@@ -1,0 +1,25 @@
+pandas==2.1.0
+numpy==1.24.3
+scikit-learn==1.3.0
+
+# Configuration
+PyYAML==6.0.2
+
+# Testing
+pytest==7.4.0
+
+# Experiment Tracking
+mlflow==2.14.3
+
+# Data Version Control
+dvc==3.59.2
+
+# Drift Monitoring
+evidently==0.4.38
+
+# Visualization
+matplotlib==3.7.1
+seaborn==0.12.2
+
+# Utilities
+joblib==1.3.2
