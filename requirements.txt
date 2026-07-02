@@ -15,7 +15,7 @@ mlflow==2.14.3
 dvc==3.59.2
 
 # Drift Monitoring
-evidently==0.4.38
+evidently>=0.4.0
 
 # Visualization
 matplotlib==3.7.1
