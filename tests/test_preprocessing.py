@@ -26,7 +26,7 @@ def config():
 
 @pytest.fixture
 def real_data(config):
-    return load_data(config["data_url"])
+    return load_data(config["t_data_url"])
 
 
 class TestValidateDataframe:

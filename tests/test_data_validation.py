@@ -15,7 +15,7 @@ from utils import load_config, load_data
 
 def test_expected_columns_are_present():
     config = load_config("configs/config.yaml")
-    df = load_data(config["data_url"])
+    df = load_data(config["t_data_url"])
 
     expected_columns = (
         config["numeric_columns"]
@@ -28,7 +28,7 @@ def test_expected_columns_are_present():
 
 def test_target_contains_only_expected_values():
     config = load_config("configs/config.yaml")
-    df = load_data(config["data_url"])
+    df = load_data(config["t_data_url"])
 
     target = config["target"]
 
@@ -40,7 +40,7 @@ def test_target_contains_only_expected_values():
 
 def test_numeric_features_are_within_expected_ranges():
     config = load_config("configs/config.yaml")
-    df = load_data(config["data_url"])
+    df = load_data(config["t_data_url"])
 
     numeric_columns = config["numeric_columns"]
 
@@ -51,6 +51,6 @@ def test_numeric_features_are_within_expected_ranges():
 
 def test_dataset_has_rows():
     config = load_config("configs/config.yaml")
-    df = load_data(config["data_url"])
+    df = load_data(config["t_data_url"])
 
     assert len(df) > 0

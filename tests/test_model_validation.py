@@ -20,7 +20,7 @@ from utils import load_config, load_data, prepare_features
 
 def test_model_predictions_have_correct_shape_and_type():
     config = load_config("configs/config.yaml")
-    df = load_data(config["data_url"])
+    df = load_data(config["t_data_url"])
 
     df = clean_data(
         df,
@@ -44,7 +44,7 @@ def test_model_predictions_have_correct_shape_and_type():
 
 def test_model_meets_minimum_performance_threshold():
     config = load_config("configs/config.yaml")
-    df = load_data(config["data_url"])
+    df = load_data(config["t_data_url"])
 
     df = clean_data(
         df,
