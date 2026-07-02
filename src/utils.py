@@ -11,7 +11,20 @@ import yaml  # type: ignore
 from sklearn.model_selection import train_test_split  # type: ignore
 
 
-def load_config(config_path="/Users/tjscott23/Documents/MLOps_PL_project/configs/config.yaml"):
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+
+def load_config(config_path=None):
+    if config_path is None:
+        config_path = PROJECT_ROOT / "configs" / "config.yaml"
+    else:
+        config_path = Path(config_path)
+
+        if not config_path.is_absolute():
+            config_path = PROJECT_ROOT / config_path
+
     with open(config_path, "r") as f:
         return yaml.safe_load(f)
 

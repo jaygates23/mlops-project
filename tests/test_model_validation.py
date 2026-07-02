@@ -1,8 +1,15 @@
 # tests/test_model_validation.py
-
+import os
 import sys
+import pandas as pd
+import pytest
+from sklearn.naive_bayes import GaussianNB
 
-sys.path.insert(0, "src")
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+SRC_PATH = os.path.join(PROJECT_ROOT, "src")
+
+sys.path.insert(0, SRC_PATH)
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, f1_score
@@ -20,16 +27,13 @@ def test_model_predictions_have_correct_shape_and_type():
         config["numeric_columns"],
         config["categorical_columns"],
     )
+    df[config["target"]] = df[config["target"]].map({"no": 0, "yes": 1})
 
     df = encode_categoricals(df, config["categorical_columns"])
 
     X_train, X_test, y_train, y_test = prepare_features(df, config)
 
-    model = RandomForestClassifier(
-        n_estimators=10,
-        max_depth=5,
-        random_state=config["random_state"],
-    )
+    model = GaussianNB()
 
     model.fit(X_train, y_train)
     preds = model.predict(X_test)
@@ -47,16 +51,13 @@ def test_model_meets_minimum_performance_threshold():
         config["numeric_columns"],
         config["categorical_columns"],
     )
+    df[config["target"]] = df[config["target"]].map({"no": 0, "yes": 1})
 
     df = encode_categoricals(df, config["categorical_columns"])
 
     X_train, X_test, y_train, y_test = prepare_features(df, config)
 
-    model = RandomForestClassifier(
-        n_estimators=config["model"]["n_estimators"],
-        max_depth=config["model"]["max_depth"],
-        random_state=config["random_state"],
-    )
+    model = GaussianNB()
 
     model.fit(X_train, y_train)
     preds = model.predict(X_test)
