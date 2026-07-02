@@ -10,12 +10,9 @@ sys.path.insert(0, os.path.dirname(__file__))
 
 from utils import load_config, load_data
 
-try:
-    from evidently import Report
-    from evidently.presets import DataDriftPreset
-except ImportError:
-    from evidently.legacy.report import Report
-    from evidently.legacy.metric_preset import DataDriftPreset
+
+from evidently import Report
+from evidently.presets import DataDriftPreset
 
 
 def load_or_create_production_data(config):
