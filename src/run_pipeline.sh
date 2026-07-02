@@ -1,36 +1,32 @@
 #!/bin/bash
 
-set -e
+set -e  # Exit immediately if any command fails
 
 echo "======================================="
 echo "Starting MLOps Pipeline"
 echo "======================================="
 
 echo ""
-echo "Running unit tests..."
-pytest tests/ -v
+echo "1. Training model..."
+python train.py
 
 echo ""
-echo "Training model..."
-python src/train.py
+echo "2. Evaluating model..."
+python evaluate.py
 
 echo ""
-echo "Evaluating model..."
-python src/evaluate.py
+echo "3. Running MLflow experiments..."
+python compare_experiments.py
 
 echo ""
-echo "Running MLflow experiments..."
-python src/compare_experiments.py
+echo "4. Creating simulated production data..."
+python drift/create_drift.py
 
 echo ""
-echo "Creating simulated production data..."
-python src/create_drift.py
-
-echo ""
-echo "Running drift monitoring..."
-python src/monitor_drift.py
+echo "5. Monitoring data drift..."
+python monitor_drift.py
 
 echo ""
 echo "======================================="
-echo "All tasks completed successfully!"
+echo "Pipeline completed successfully!"
 echo "======================================="

@@ -8,7 +8,7 @@ import sys
 import pandas as pd  # type: ignore
 import yaml  # type: ignore
 
-from sklearn.model_selection import train_test_split.  # type: ignore
+from sklearn.model_selection import train_test_split  # type: ignore
 
 
 def load_config(config_path="configs/config.yaml"):
