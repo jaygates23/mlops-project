@@ -1,11 +1,32 @@
-# Data and models
-models/
-metrics/
-
 # Python
 __pycache__/
-*.pyc
+*.py[cod]
+.pytest_cache/
+
+# Virtual environments
+venv/
 .venv/
 
-# OS
+# macOS
 .DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Models
+models/
+*.pkl
+
+# Metrics
+metrics/
+reports/
+
+# MLflow
+mlruns/
+
+# DVC cache
+.dvc/cache/
+
+# Dataset
+Data/IBM_HR_Attrition.csv

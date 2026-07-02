@@ -1,0 +1,5 @@
+outs:
+- md5: c678c2ed98147edd75b6caa1c3e1caed
+  size: 210829
+  hash: md5
+  path: IBM_HR_Attrition.csv
