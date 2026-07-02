@@ -1,4 +1,4 @@
-data_url: "/Users/tjscott23/Documents/MLOps_PL_project/Data/IBM_HR_Attrition.csv"
+data_url: "Data/sample_Attrition.csv"
 t_data_url: "Data/sample_Attrition.csv"
 target: "attrition"
 
