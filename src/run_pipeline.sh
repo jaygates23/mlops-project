@@ -20,7 +20,7 @@ python compare_experiments.py
 
 echo ""
 echo "4. Creating simulated production data..."
-python drift/create_drift.py
+python create_drift.py
 
 echo ""
 echo "5. Monitoring data drift..."
