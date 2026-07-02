@@ -1,5 +1,5 @@
 data_url: "/Users/tjscott23/Documents/MLOps_PL_project/Data/IBM_HR_Attrition.csv"
-t_data_url: "MLOps_PL_project/Data/sample_Attrition.csv"
+t_data_url: "Data/sample_Attrition.csv"
 target: "attrition"
 
 test_size: 0.2
