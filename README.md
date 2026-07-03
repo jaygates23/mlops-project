@@ -396,6 +396,58 @@ Models are evaluated using
 The highest-performing model is automatically selected and saved.
 
 ---
+---
+
+# Drift Monitoring Analysis
+
+The project includes an automated drift monitoring pipeline using **Evidently** to compare the training dataset (reference data) against simulated production data. The simulated production dataset introduces controlled changes to several numerical and categorical features to emulate how real-world data distributions may evolve after deployment.
+
+## Which Features Showed Drift and Why?
+
+The simulated production dataset intentionally introduced drift into several employee-related features, including:
+
+- **Monthly Income** – increased using random scaling to simulate salary growth over time.
+- **Daily Rate** – adjusted to represent changes in compensation policies.
+- **Hourly Rate** – modified to reflect wage adjustments.
+- **Distance From Home** – shifted to simulate changes in employee hiring locations or remote work policies.
+- **Years at Company** – increased slightly to represent an aging workforce.
+- **Over Time** – the proportion of employees working overtime was intentionally increased.
+- **Business Travel** – additional employees were assigned frequent travel to simulate changing business requirements.
+
+These changes represent realistic business scenarios that may occur after a model has been deployed into production.
+
+---
+
+## Would This Drift Likely Affect Model Performance?
+
+Yes.
+
+Several of the drifted features are among the most informative predictors of employee attrition. Changes in compensation, tenure, overtime frequency, and travel requirements may alter the relationship between employee characteristics and attrition outcomes.
+
+If these feature distributions continue to shift over time, model predictions may become less reliable because the model was trained on historical data that no longer reflects the current employee population.
+
+The severity of the impact depends on both the magnitude of the drift and the importance of the affected features within the trained model.
+
+---
+
+## Recommended Action
+
+The appropriate response depends on the amount of detected drift.
+
+- **Low drift (< configured threshold):**
+  - Continue monitoring.
+  - No immediate action is required.
+
+- **Moderate drift:**
+  - Investigate the affected features.
+  - Determine whether the changes reflect expected business evolution or potential data quality issues.
+
+- **High drift (above configured threshold):**
+  - Retrain the model using recent production data.
+  - Re-evaluate model performance on updated data.
+  - Redeploy the model only after validation confirms acceptable predictive performance.
+
+The automated monitoring script (`src/monitor_drift.py`) exits with a non-zero status code whenever the overall drift share exceeds the configured threshold. This behavior enables CI/CD pipelines to detect significant distribution changes and trigger further investigation or retraining before deploying updated models.
 
 # Future Improvements
 
@@ -415,6 +467,6 @@ Potential enhancements include
 
 **Terrence Scott**
 
-MS Data Science Candidate
+MS Data Science and Artificial Intelligence Candidate
 
 AI | Machine Learning | MLOps | Data Science
